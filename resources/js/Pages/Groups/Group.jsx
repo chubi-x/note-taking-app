@@ -22,7 +22,7 @@ export default function Group({group}){
                 <img className='w-5' src={deleteBtn} alt="delete button"/>
             </button>
         </div>
-        <ul id={`todo-${group.id}`} className="w-10/12 ml-10 collapse visible border-2 p-2 space-y-2">
+        <ul id={`todo-${group.id}`} className="w-10/12 ml-10 collapse visible p-2 space-y-2">
             {group?.todos.map((todo) => (
                 <Todo key={todo.id} inGroup todo={todo} className={"bg-rose-400"}/>
             ))}
