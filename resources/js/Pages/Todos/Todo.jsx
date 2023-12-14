@@ -18,7 +18,7 @@ export default function Todo({todo, className, children, inGroup}){
         return <form className={"flex flex-col flex-1 w-full"}
                      onSubmit={(e)=>submit(e)}>
                 <input autoFocus type='text'
-                      className={"w-full border-none p-4 focus:border-blue-300 focus:ring-2 font-medium bg-white rounded-lg cursor-pointer"}
+                      className={"w-full p-4 border-none focus:ring-0 focus:outline-none font-medium bg-white rounded-lg cursor-pointer"}
                       value={editNote.name} onChange={(e) => setNew('name', e.target.value)}/>
             </form>
     }
@@ -30,7 +30,9 @@ export default function Todo({todo, className, children, inGroup}){
     }
     return <>
         {children}
-        <li className={`font-medium flex justify-between bg-white rounded-lg pr-4 gap-2 ${className}`} >
+        <li className={`font-medium flex shadow-md justify-between bg-white rounded-lg pr-4 gap-2
+            ${edit ? 'border-2 border-blue-300' : ''} ${className}`}
+        >
             { edit ? editInput() :
                 <p className={`p-4 flex-1`}>
                     <span onClick={() => completeTodo()}
