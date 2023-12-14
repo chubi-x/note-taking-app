@@ -1,5 +1,8 @@
 import React from "react";
 export default function Tabs ({ color, openTab, setOpenTab }) {
+    const tabStyle =(id) => `${ (openTab === id
+        ? "text-white bg-" + color + "-400"
+        : "text-" + color + "-600 bg-white")}`
     return (
         <>
             <div className="flex flex-wrap w-full">
@@ -11,10 +14,7 @@ export default function Tabs ({ color, openTab, setOpenTab }) {
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
                             <a
                                 className={
-                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" +
-                                    (openTab === 1
-                                        ? "text-white bg-" + color + "-400"
-                                        : "text-" + color + "-600 bg-white")
+                                    ` ${tabStyle(1)} text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal`
                                 }
                                 onClick={e => {
                                     e.preventDefault();
@@ -29,10 +29,7 @@ export default function Tabs ({ color, openTab, setOpenTab }) {
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
                             <a
                                 className={
-                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                                    (openTab === 2
-                                        ? "text-white bg-" + color + "-400"
-                                        : "text-" + color + "-600 bg-white")
+                                    ` ${tabStyle(2)} text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal`
                                 }
                                 onClick={e => {
                                     e.preventDefault();
