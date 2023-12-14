@@ -44,9 +44,15 @@ export default function Group({group}){
             </button>
         </div>
         <ul id={`todo-${group.id}`} className="w-10/12 ml-10 collapse visible p-2 space-y-2">
-            {group?.todos.map((todo) => (
+            {
+                group.todos.length > 0 ?
+                group?.todos?.map((todo) => (
+                !todo.recycled &&
                 <Todo key={todo.id} inGroup todo={todo} className={"bg-rose-400"}/>
-            ))}
+            ))
+                :
+                <p className="p-4 capitalize text-red-600 font-bold flex-1">No Todos</p>
+            }
         </ul>
     </li>
 }
