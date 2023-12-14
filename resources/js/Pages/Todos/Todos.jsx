@@ -21,6 +21,9 @@ export default function Todos ({todos, children})  {
     const restoreTodo = (id) => {
         patch(route('todos.restore', id), {preserveState: false});
     }
+    const hasRecycled = () => {
+        return todos.filter(todo => todo.recycled).length > 0;
+    }
     const RecycleBin = () => {
         return <div className="modal fade" id='recycle-bin-modal' tabIndex="-1" aria-labelledby='#recycle-bin'
                     aria-hidden="true">
@@ -31,7 +34,7 @@ export default function Todos ({todos, children})  {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        {todos && todos.map((todo) => (
+                        {hasRecycled() ? todos.map((todo) => (
                             todo.recycled &&
                             <div key={todo.id} className="flex justify-between items-center mb-10 py-6 shadow-md px-6 shadow-red-200">
                                 <p className="text-md font-bold max-w-xs">{todo.name}</p>
@@ -45,7 +48,13 @@ export default function Todos ({todos, children})  {
                                </div>
 
                             </div>
-                        ))}
+
+                        ))
+                            :
+                            <div className="flex justify-center items-center mb-10 py-6 px-6 shadow-red-200">
+                                <p className="text-md font-bold max-w-xs">No Todos in Recycle Bin</p>
+                            </div>
+                        }
 
                     </div>
                     <div className="modal-footer bg-gray-800">
