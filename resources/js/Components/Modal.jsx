@@ -23,6 +23,9 @@ export default function Modal({groups, id, title, todo}) {
                 <div className="modal-body">
                     <form id={`addGroup-${todo.id}`} onSubmit={(e)=>handleSubmit(e)}>
                         <select onChange={ (e)=> setGroup('group_id', e.target.value)}>
+                            <option value='Select a Group' disabled>
+                                Select a Group
+                            </option>
                             {groups && groups.map((group) => (
                                 <option value={group.id} key={group.id}>
                                     {group.name}
