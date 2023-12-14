@@ -19,11 +19,11 @@ export default function Home({auth, todos, groups}) {
     }
     return (
             <Authenticated user={auth.user}>
-                <div className="w-2/3 mx-auto w-full flex flex-col p-20 space-y-6 items-center justify-center">
+                <div className="w-full md:w-2/3 mx-auto w-full flex flex-col p-6 md:p-20 space-y-6 items-center justify-center">
                     <Head title="Todo App" />
                     <h1 className="text-4xl font-bold">Todo App</h1>
                     <Tabs color="rose" openTab={openTab} setOpenTab={setOpenTab} />
-                    <div className="shadow-md shadow-red-500 h-auto w-full py-10 px-32 md:px-16 rounded-md ">
+                    <div className="shadow-md shadow-red-500 h-auto w-full py-10 px-6 md:px-16 rounded-md ">
                         {openTab === 1 ? todosTab(): <Groups groups={groups}/>}
                     </div>
                 </div>
