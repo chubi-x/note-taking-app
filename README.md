@@ -60,4 +60,5 @@ You can run the application using the following commands.
 
 `npm run dev` to start the vite server
 
-The application should now be running on your local machine. You can access it by visiting http://127.0.0.1:8000 or whatever url php gives you, in your browser.
+The application should now be running on your local machine. You can access it by visiting http://127.0.0.1:8000 or whatever url
+the `php artisan serve` command gives you, in your browser.
