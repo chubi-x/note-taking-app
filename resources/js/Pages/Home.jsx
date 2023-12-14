@@ -25,7 +25,7 @@ export default function Home({todos, groups}) {
                 <Head title="Todo App" />
                 <h1 className="text-4xl font-bold">Todo App</h1>
                 <Tabs color="rose" openTab={openTab} setOpenTab={setOpenTab} />
-                <div className="bg-rose-400 h-auto w-full p-20 px-40  rounded-md ">
+                <div className="shadow-md shadow-red-500 h-auto w-full py-10 px-32 md:px-16 rounded-md ">
                     {openTab === 1 ? todosTab(): <Groups groups={groups}/>}
                 </div>
             </div>
