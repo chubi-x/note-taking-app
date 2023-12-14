@@ -1,6 +1,6 @@
 import { Head} from '@inertiajs/react';
 import React from "react";
-import Notes from "@/Pages/Todos/Todos.jsx";
+import Todos from "@/Pages/Todos/Todos.jsx";
 import Todo from "@/Pages/Todos/Todo.jsx";
 import Groups from "@/Pages/Groups/Groups.jsx";
 import Tabs from "@/Components/Tabs.jsx";
@@ -11,13 +11,13 @@ import Modal from "@/Components/Modal.jsx";
 export default function Home({todos, groups}) {
     const [openTab, setOpenTab] = React.useState(1);
     const todosTab = () => {
-        return <Notes>
+        return <Todos>
                 {todos.map((todo) => (
                     <Todo key={todo.id} todo={todo}>
                         <Modal id={`todo-${todo.id}-modal`} groups={groups} title="Add to Group" todo={todo}/>
                     </Todo>
                 ))}
-        </Notes>
+            </Todos>
     }
     return (
         <>
