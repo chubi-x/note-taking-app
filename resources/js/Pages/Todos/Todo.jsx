@@ -3,13 +3,13 @@ import {useForm} from "@inertiajs/react";
 
 export default function Todo({todo, className, children, inGroup}){
     const [edit, setEdit] = useState(false);
-    const {patch,delete:del} = useForm();
+    const {patch, delete:del} = useForm();
     const {data: editNote , patch: update, setData: setNew} = useForm({name: todo.name});
     const toggleEdit = () => {
         setEdit(!edit);
     }
     const submit = (e) => {
-        update(route('todos.update', todo.id), {preserveState: true});
+        update(route('todos.update', todo.id), {preserveState: false} );
         e.preventDefault();
     }
     const editInput = () => {
