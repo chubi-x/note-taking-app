@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/todos/{todo}/complete', [TodoController::class, 'complete'])->name('todos.complete');
 //create group
     Route::post('/groups', [GroupController::class, 'store'])->name('groups.store');
+//update group
+    Route::patch('/groups/{group}', [GroupController::class, 'update'])->name('groups.update');
 // add todo to group
     Route::post('/todos/{todo}/groups', [TodoController::class, 'addTodo'])->name('todos.groups.add');
 // remove todo from group

@@ -45,7 +45,11 @@ class GroupController extends Controller
      * Update group
      */
     public function update(Request $request, string $id)   {
-        //
+        //update group
+        $group = Group::find($id);
+        $group->name = $request->all()["name"];
+        $group->save();
+        return redirect()->back();
     }
     /**
      * Add todo to a group
