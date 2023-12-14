@@ -75,6 +75,22 @@ class TodoController extends Controller
         return redirect()->back();
     }
 
+    public function recycle(Request $request, string $id)
+    {
+        //recycle todo
+        $todo = Todo::find($id);
+        $todo->recycled = true;
+        $todo->save();
+        return redirect()->back();
+    }
+    public function restore(Request $request, string $id)
+    {
+        //restore todo
+        $todo = Todo::find($id);
+        $todo->recycled = false;
+        $todo->save();
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      */

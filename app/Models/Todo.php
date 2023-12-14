@@ -9,6 +9,7 @@ class Todo extends Model
 {
     protected $casts = [
         'completed' => 'boolean',
+        'recycled' => 'boolean',
     ];
     use HasFactory;
     public function group() {

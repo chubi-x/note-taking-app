@@ -5,7 +5,6 @@ import editBtn from '@/../images/edit.svg';
 import groupBtn from '@/../images/group.svg';
 export default function Todo({todo, className, children, inGroup}){
     const [edit, setEdit] = useState(false);
-    const {patch, delete:del} = useForm();
     const {data , patch: update, setData: setNew} = useForm({name: todo.name});
     const toggleEdit = () => {
         setEdit(!edit);
@@ -23,10 +22,10 @@ export default function Todo({todo, className, children, inGroup}){
             </form>
     }
     const completeTodo = () => {
-        patch(route('todos.complete', todo.id), {preserveScroll: true});
+        update(route('todos.complete', todo.id), {preserveScroll: true});
     }
-    const deleteTodo = () => {
-        del(route('todos.destroy', todo.id), {preserveScroll:true});
+    const recycleTodo = () => {
+        update(route('todos.recycle', todo.id), {preserveScroll:true});
     }
     return <>
         {children}
@@ -52,7 +51,7 @@ export default function Todo({todo, className, children, inGroup}){
             {!inGroup && <button data-bs-toggle="modal" data-bs-target={`#todo-${todo.id}-modal`} >
                 <img className='w-5' src={groupBtn} alt="group button"/>
             </button>}
-            <button className="ml-4 text-rose-600 " onClick={()=>deleteTodo()} title='delete'>
+            <button className="ml-4 text-rose-600 " onClick={()=>recycleTodo()} title='delete'>
                 <img className='w-5' src={deleteBtn} alt="delete button"/>
             </button>
         </li>

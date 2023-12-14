@@ -11,9 +11,9 @@ import Modal from "@/Components/Modal.jsx";
 export default function Home({todos, groups}) {
     const [openTab, setOpenTab] = React.useState(1);
     const todosTab = () => {
-        return <Todos>
+        return <Todos todos={todos}>
                 {todos.map((todo) => (
-                    <Todo key={todo.id} todo={todo}>
+                  !todo.recycled &&  <Todo key={todo.id} todo={todo}>
                         <Modal id={`todo-${todo.id}-modal`} groups={groups} title="Add to Group" todo={todo}/>
                     </Todo>
                 ))}

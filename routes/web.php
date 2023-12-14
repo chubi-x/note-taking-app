@@ -41,6 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');
 //update todo
     Route::patch('/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
+
+    //recycle todo
+    Route::patch('/todos/{todo}/recycle', [TodoController::class, 'recycle'])->name('todos.recycle');
+    //restore todo
+    Route::patch('/todos/{todo}/restore', [TodoController::class, 'restore'])->name('todos.restore');
 //delete todo
     Route::delete('/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 //mark todo as completed
