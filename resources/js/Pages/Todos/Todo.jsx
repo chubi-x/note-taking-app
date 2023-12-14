@@ -6,7 +6,7 @@ import groupBtn from '@/../images/group.svg';
 export default function Todo({todo, className, children, inGroup}){
     const [edit, setEdit] = useState(false);
     const {patch, delete:del} = useForm();
-    const {data: editNote , patch: update, setData: setNew} = useForm({name: todo.name});
+    const {data , patch: update, setData: setNew} = useForm({name: todo.name});
     const toggleEdit = () => {
         setEdit(!edit);
     }
@@ -19,7 +19,7 @@ export default function Todo({todo, className, children, inGroup}){
                      onSubmit={(e)=>submit(e)}>
                 <input autoFocus type='text'
                       className={"w-full p-4 border-none focus:ring-0 focus:outline-none font-medium bg-white rounded-lg cursor-pointer"}
-                      value={editNote.name} onChange={(e) => setNew('name', e.target.value)}/>
+                      value={data.name} onChange={(e) => setNew('name', e.target.value)}/>
             </form>
     }
     const completeTodo = () => {
