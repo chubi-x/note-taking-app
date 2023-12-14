@@ -19,15 +19,30 @@ export default function Todo({todo, className, children, inGroup}){
                       value={editNote.name} onChange={(e) => setNew('name', e.target.value)}/>
         </form>
     }
+    const completeTodo = () => {
+        patch(route('todos.complete', todo.id), {preserveScroll: true});
+    }
+    const deleteTodo = () => {
+        del(route('todos.destroy', todo.id), {preserveScroll:true});
+    }
     return <>
         {children}
         <li className={`font-medium flex justify-between bg-white rounded-lg pr-4 gap-2 ${className}`} >
-            { edit ? editInput() : <p className={`p-4 flex-1`}> <span onClick={() => patch(route('todos.complete', todo.id), {preserveScroll: true})
-            } className={`cursor-pointer italic flex-1 ${todo.completed ? 'line-through' : ''}`}>{todo.name}</span> <span className=" inline-block underline font-bold capitalize text-gray-500 not-italic">{todo.group && todo.group.name}</span></p>
+            { edit ? editInput() :
+                <p className={`p-4 flex-1`}>
+                    <span onClick={() => completeTodo()}
+                          className={`cursor-pointer italic flex-1 ${todo.completed ? 'line-through' : ''}`}
+                    >
+                        {todo.name}
+                    </span>
+                    <span className="inline-block bg-red-100 ml-2 font-bold capitalize text-gray-500 not-italic">
+                        {todo.group && todo.group.name}
+                    </span>
+            </p>
             }
             <button className=" underline" onClick={() =>toggleEdit() }>Edit</button>
-            <button className="ml-4 text-rose-600 " onClick={() => del(route('todos.destroy', todo.id), {preserveScroll:true})}>X</button>
-            {!inGroup &&   <button data-bs-toggle="modal" data-bs-target={`#todo-${todo.id}-modal`} >Add to Group </button>}
+            <button className="ml-4 text-rose-600 " onClick={()=>deleteTodo()}>X</button>
+            {!inGroup && <button data-bs-toggle="modal" data-bs-target={`#todo-${todo.id}-modal`} >Add to Group </button>}
         </li>
     </>
 }
