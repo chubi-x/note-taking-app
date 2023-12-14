@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {useForm} from "@inertiajs/react";
-
+import deleteBtn from '@/../images/delete.svg';
+import editBtn from '@/../images/edit.svg';
+import groupBtn from '@/../images/group.svg';
 export default function Todo({todo, className, children, inGroup}){
     const [edit, setEdit] = useState(false);
     const {patch, delete:del} = useForm();
@@ -41,9 +43,16 @@ export default function Todo({todo, className, children, inGroup}){
                     </span>
             </p>
             }
-            <button className=" underline" onClick={() =>toggleEdit() }>Edit</button>
-            <button className="ml-4 text-rose-600 " onClick={()=>deleteTodo()}>X</button>
-            {!inGroup && <button data-bs-toggle="modal" data-bs-target={`#todo-${todo.id}-modal`} >Add to Group </button>}
+            <button className=" underline" onClick={() =>toggleEdit() }>
+                <img className='w-5' src={editBtn} alt="edit button"/>
+            </button>
+
+            {!inGroup && <button data-bs-toggle="modal" data-bs-target={`#todo-${todo.id}-modal`} >
+                <img className='w-5' src={groupBtn} alt="group button"/>
+            </button>}
+            <button className="ml-4 text-rose-600 " onClick={()=>deleteTodo()} title='delete'>
+                <img className='w-5' src={deleteBtn} alt="delete button"/>
+            </button>
         </li>
     </>
 }
