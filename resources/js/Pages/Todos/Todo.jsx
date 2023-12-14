@@ -13,11 +13,12 @@ export default function Todo({todo, className, children, inGroup}){
         e.preventDefault();
     }
     const editInput = () => {
-        return <form className={"flex flex-col flex-1 w-full"} onSubmit={(e)=>submit(e)}>
-            <textarea autoFocus
+        return <form className={"flex flex-col flex-1 w-full"}
+                     onSubmit={(e)=>submit(e)}>
+                <input autoFocus type='text'
                       className={"w-full border-none p-4 focus:border-blue-300 focus:ring-2 font-medium bg-white rounded-lg cursor-pointer"}
                       value={editNote.name} onChange={(e) => setNew('name', e.target.value)}/>
-        </form>
+            </form>
     }
     const completeTodo = () => {
         patch(route('todos.complete', todo.id), {preserveScroll: true});
