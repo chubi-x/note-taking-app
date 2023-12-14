@@ -22,6 +22,12 @@ use Inertia\Inertia;
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 //get all todos
     Route::get('/', function(){
         $todos = Todo::all()->where('user_id', auth()->user()->id);
