@@ -16,8 +16,8 @@ export default function Todos ({children})  {
         <ul className="space-y-2">
             {children}
             <li className={" "} >
-                <form className="flex flex-col" onSubmit={(e => handleSubmit(e))}>
-                    <input className="  bg-white rounded-lg w-full border-none focus:border-blue-300 focus:ring-2 font-medium cursor-pointer p-4"
+                <form className="flex flex-col mt-10 border-b-2 border-gray-400" onSubmit={(e => handleSubmit(e))}>
+                    <input className="bg-white rounded-lg w-full border-none focus:border-blue-300 focus:ring-2 font-medium cursor-pointer p-4"
                            type="text" placeholder="New Todo" onChange={(e) => setNote('name', e.target.value)}
                     />
                     {errors.name && <span className="text-rose-600 text-sm mt-1">{errors.name}</span>}
