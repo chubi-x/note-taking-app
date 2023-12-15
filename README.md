@@ -1,67 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+To run the application you need to follow a series of steps to clone the repository, set up the environment, and start the application.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Clone the GitHub repository locally
+Use the `git clone` command to clone the GitHub repository to your local machine. Make sure you have Git installed on your local machine. 
 
-## About Laravel
+` git clone https://github.com/chubi-x/note-taking-app.git`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Once done, navigate into the project directory using the cd command.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+`cd note-taking-app`
 
-## Learning Laravel
+## Install Dependencies
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Install Required Software
+Ensure you have the latest stable version of PHP, Composer, NodeJs, and NPM installed on your machine. You can download PHP from the official PHP website and install Composer following the instructions on the Composer website. 
+You can also install NodeJs and NPM from the official NodeJs website.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Install Dependencies
+Use Composer and npm to install all the required packages and dependencies for the project.
 
-## Laravel Sponsors
+`composer install`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+If you get the follwing error:
 
-### Premium Partners
+`Your lock file does not contain a compatible set of packages. Please run composer update.`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Run the following command to fix it:
+`composer update`
 
-## Contributing
+Try running `composer install` again.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Next run:
+`npm install` to install the npm packages
 
-## Code of Conduct
+### Set Up Environment Configuration
+Laravel projects require environment-specific configurations. Locate the .env.example file in the project's root directory, make a copy of this file and rename it to .env.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+`cp .env.example .env`
 
-## Security Vulnerabilities
+### Generate Application Key
+Laravel requires an application key to secure session data and other sensitive information. Generate this application key using the following command.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+`php artisan key:generate`
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# todo-app
+### Run Migrations
+
+Run migrations to create the necessary tables in the database.
+
+`php artisan migrate`
+
+you should be prompted to create the database. Type yes and hit enter.
+
+### Run the Application
+You can run the application using the following commands.
+
+`php artisan serve` to start the laravel application
+
+`npm run dev` to start the vite server
+
+The application should now be running on your local machine. You can access it by visiting http://127.0.0.1:8000 or whatever url
+the `php artisan serve` command gives you, in your browser.
